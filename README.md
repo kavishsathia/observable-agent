@@ -52,6 +52,52 @@ agent = ObservableAgent(
 
 Using this library is very much a process of continuous exploration, you observe your agents, determine their failure modes and progressively "harden" your rules. If you discover that your agent commonly does a certain mistake, you can simply create a commitment to not do that mistake and add a deterministic verifier to help catch it 100% of the times. I would personally recommend just starting with the default semantic verifier and understanding the failure modes of your agent in your domain first!
 
+## Architecture
+
+```mermaid
+classDiagram
+    ObservableAgent --> Contract
+    ObservableAgent --> Execution
+    Contract --> Commitment
+    Commitment --> Verifier
+    Commitment --> SemanticVerifier
+
+    class ObservableAgent {
+        +name: str
+        +model: str
+        +instruction: str
+        +contract: Contract
+    }
+
+    class Contract {
+        +commitments: List~Commitment~
+        +verify(execution) List~VerificationResult~
+    }
+
+    class Commitment {
+        +name: str
+        +terms: str
+        +verifier: Callable
+        +semantic_sampling_rate: float
+        +verify(execution) VerificationResult
+    }
+
+    class Execution {
+        +tool_calls: List~ToolCall~
+        +format_tool_calls() str
+    }
+
+    class Verifier {
+        <<deterministic>>
+        +verify(execution, terms) Result
+    }
+
+    class SemanticVerifier {
+        <<LLM-based>>
+        +verify(execution, terms) Result
+    }
+```
+
 ## Key Concepts
 
 ## Installation
