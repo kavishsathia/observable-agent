@@ -6,6 +6,7 @@ from google.adk.tools.base_tool import BaseTool
 
 
 class VerificationResultStatus(Enum):
+    """Enumeration of verification result statuses."""
     PASS = "pass"
     WARNING = "warning"
     VIOLATION = "violation"
@@ -16,6 +17,7 @@ class VerificationResultStatus(Enum):
 
 @dataclass
 class VerificationResult:
+    """Final verification result after all checks."""
     status: VerificationResultStatus
     commitment_name: str
     actual: str
@@ -25,6 +27,7 @@ class VerificationResult:
 
 @dataclass
 class IntermediateVerificationResult:
+    """Intermediate result from a verifier before finalizing."""
     status: VerificationResultStatus
     actual: str
     expected: str
@@ -33,6 +36,7 @@ class IntermediateVerificationResult:
 
 @dataclass
 class ToolCall:
+    """Represents a tool call made by the agent."""
     tool: BaseTool
     args: Dict[str, Any]
     tool_context: ToolContext

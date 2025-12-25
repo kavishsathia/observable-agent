@@ -20,6 +20,7 @@ def ObservableAgent(
     on_implementation_complete: Callable[[RootVerifier], None] | None = None,
     observer: DatadogObservability | None = None
 ):
+    """Creates an observable agent with contract-based verification."""
     if tools is None:
         tools = []
 

@@ -2,6 +2,8 @@ from ddtrace.llmobs import LLMObs
 
 
 class DatadogObservability:
+    """Datadog observability integration for capturing spans and submitting evaluations."""
+
     def __init__(self):
         self._span_context = None
 
@@ -13,9 +15,11 @@ class DatadogObservability:
         LLMObs.flush()
 
     def capture_span(self) -> None:
+        """Captures a new span context for evaluations."""
         self._span_context = LLMObs.export_span(span=None)
 
     def submit_evaluation(self, label: str, value: str, reasoning: str) -> None:
+        """Submits an evaluation metric to Datadog."""
         try:
             span_context = self._span_context or LLMObs.export_span(span=None)
             LLMObs.submit_evaluation(

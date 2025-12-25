@@ -9,9 +9,11 @@ from observable_agent.contract import Contract
 
 @dataclass
 class RootVerifier:
+    """A root verifier that verifies an execution against a contract."""
     execution: Execution
     contract: Contract
     observer: DatadogObservability | None = None
 
     def verify(self) -> list[VerificationResult]:
+        """Verifies the execution against the contract."""
         return self.contract.verify(self.execution, observer=self.observer)

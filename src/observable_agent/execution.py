@@ -5,6 +5,7 @@ from google.adk.tools.base_tool import BaseTool
 
 @dataclass
 class Execution:
+    """Represents the execution details of an agent."""
     name: str
     model: str
     instruction: str
@@ -13,6 +14,7 @@ class Execution:
     tool_calls: list[ToolCall] = field(default_factory=list)
 
     def format_tool_calls(self) -> str:
+        """Formats the tool calls for logging or display purposes."""
         return "\n".join([
             f"Tool: {tc.tool.name}, Args: {tc.args}, Response: {tc.tool_response}"
             for tc in self.tool_calls

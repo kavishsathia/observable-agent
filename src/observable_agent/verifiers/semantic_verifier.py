@@ -14,6 +14,8 @@ from tenacity import retry, stop_after_attempt, wait_exponential, RetryError
     wait=wait_exponential(multiplier=1, min=1, max=10)
 )
 async def _semantic_verifier_async(execution, contract_terms: str) -> IntermediateVerificationResult:
+    """An asynchronous semantic verifier that checks agent compliance with contract terms."""
+
     prompt = f"""
             You are bound by the following contract terms:
             {contract_terms}
@@ -90,6 +92,8 @@ async def _semantic_verifier_async(execution, contract_terms: str) -> Intermedia
 
 
 def semantic_verifier(execution, terms: str) -> IntermediateVerificationResult:
+    """A semantic verifier that checks agent compliance with contract terms."""
+
     def run_in_new_loop():
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)

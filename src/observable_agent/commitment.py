@@ -9,6 +9,7 @@ import random
 
 @dataclass
 class Commitment:
+    """A commitment representing a specific term in a contract."""
     name: str
     terms: str
     verifier: Callable[[Execution, str],
@@ -17,6 +18,12 @@ class Commitment:
     on_violation: Callable[[VerificationResult], None] | None = None
 
     def verify(self, execution: Execution, observer: DatadogObservability | None = None) -> VerificationResult:
+        """
+            Verifies the execution against the commitment terms and takes into account the sampling rate.
+            If a deterministic verifier is provided, it is called first. If it passes and the sampling checks in,
+            the semantic verifier is called. If no deterministic verifier is provided, the semantic verifier is called
+            based on the sampling rate.
+        """
         sampled_in = random.random() <= self.semantic_sampling_rate
 
         if self.verifier:
@@ -30,11 +37,14 @@ class Commitment:
                     expected=self.terms,
                     context={}
                 )
+
             deterministic_passed = intermediate_result.status == VerificationResultStatus.PASS
             if deterministic_passed and sampled_in:
                 intermediate_result = semantic_verifier(execution, self.terms)
+
         elif sampled_in:
             intermediate_result = semantic_verifier(execution, self.terms)
+
         else:
             return VerificationResult(
                 status=VerificationResultStatus.SKIPPED,
@@ -64,4 +74,5 @@ Context: {intermediate_result.context}
         )
 
     def get_term(self) -> str:
+        """Returns the terms of the commitment."""
         return self.terms
