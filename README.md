@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Observable Agent" width="600"/>
+  <img src="https://raw.githubusercontent.com/kavishsathia/observable-agent/main/assets/logo.png" alt="Observable Agent" width="600"/>
 </p>
 
 <p align="center">
