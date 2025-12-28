@@ -23,4 +23,4 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run tests
-        run: pytest --cov=src/observable_agent tests/
+        run: pytest --cov=src/sworn tests/

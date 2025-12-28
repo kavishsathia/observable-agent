@@ -1,6 +1,6 @@
-from observable_agent import Contract, Commitment
-from observable_agent import DatadogObservability
-from observable_agent.verifiers.semantic_verifier import semantic_verifier
+from sworn import Contract, Commitment
+from sworn import DatadogObservability
+from sworn.verifiers.semantic_verifier import semantic_verifier
 from google.adk.tools import FunctionTool
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService

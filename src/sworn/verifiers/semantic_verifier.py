@@ -1,6 +1,6 @@
 import asyncio
 import concurrent.futures
-from observable_agent.types import IntermediateVerificationResult, VerificationResultStatus
+from sworn.types import IntermediateVerificationResult, VerificationResultStatus
 from google.adk.agents import Agent
 from google.adk.runners import Runner
 from google.adk.tools.function_tool import FunctionTool

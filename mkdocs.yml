@@ -1,6 +1,6 @@
-site_name: Observable Agent
+site_name: Sworn
 site_description: Contract-based verification for AI agents
-repo_url: https://github.com/kavishsathia/observable-agent
+repo_url: https://github.com/kavishsathia/sworn
 
 theme:
   name: material

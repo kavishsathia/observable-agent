@@ -2,11 +2,11 @@ from dataclasses import dataclass, field
 from contextvars import ContextVar, Token
 from typing import TYPE_CHECKING, Any
 
-from observable_agent.types import ToolCall, VerificationResult
+from sworn.types import ToolCall, VerificationResult
 
 if TYPE_CHECKING:
-    from observable_agent.contract import Contract
-    from observable_agent.observability.observer import Observer
+    from sworn.contract import Contract
+    from sworn.observability.observer import Observer
 
 _context_execution: ContextVar["Execution"] = ContextVar("execution")
 

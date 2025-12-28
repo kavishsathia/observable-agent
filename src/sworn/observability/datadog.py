@@ -1,5 +1,5 @@
 from ddtrace.llmobs import LLMObs
-from observable_agent.observability.observer import Observer
+from sworn.observability.observer import Observer
 
 
 class DatadogObservability(Observer):

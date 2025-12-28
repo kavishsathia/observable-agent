@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import Callable
-from observable_agent.observability.observer import Observer
-from observable_agent.types import IntermediateVerificationResult, VerificationResult, VerificationResultStatus
-from observable_agent.execution import Execution
-from observable_agent.verifiers.semantic_verifier import semantic_verifier
+from sworn.observability.observer import Observer
+from sworn.types import IntermediateVerificationResult, VerificationResult, VerificationResultStatus
+from sworn.execution import Execution
+from sworn.verifiers.semantic_verifier import semantic_verifier
 import random
 
 

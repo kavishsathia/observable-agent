@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock, patch
-from observable_agent.commitment import Commitment
-from observable_agent.types import VerificationResultStatus, IntermediateVerificationResult
+from sworn.commitment import Commitment
+from sworn.types import VerificationResultStatus, IntermediateVerificationResult
 
 
 @pytest.fixture
@@ -44,7 +44,7 @@ class TestCommitmentVerify:
         result = commitment.verify(mock_execution)
         assert result.status == VerificationResultStatus.VIOLATION
 
-    @patch('observable_agent.commitment.random.random', return_value=0.9)
+    @patch('sworn.commitment.random.random', return_value=0.9)
     def test_skips_semantic_verifier_when_deterministic_verifier_passes_but_sampled_out(self, mock_random, mock_execution, passing_verifier):
         commitment = Commitment(
             name="test",
@@ -55,8 +55,8 @@ class TestCommitmentVerify:
         result = commitment.verify(mock_execution)
         assert result.status == VerificationResultStatus.PASS
 
-    @patch('observable_agent.commitment.random.random', return_value=0.1)
-    @patch('observable_agent.commitment.semantic_verifier', return_value=IntermediateVerificationResult(
+    @patch('sworn.commitment.random.random', return_value=0.1)
+    @patch('sworn.commitment.semantic_verifier', return_value=IntermediateVerificationResult(
         status=VerificationResultStatus.VIOLATION,
         actual="did the thing",
         expected="do the thing",
@@ -72,7 +72,7 @@ class TestCommitmentVerify:
         result = commitment.verify(mock_execution)
         assert result.status == VerificationResultStatus.VIOLATION
 
-    @patch('observable_agent.commitment.random.random', return_value=0.9)
+    @patch('sworn.commitment.random.random', return_value=0.9)
     def test_skips_semantic_verifier_when_no_deterministic_and_sampled_out(self, mock_random, mock_execution):
         commitment = Commitment(
             name="test",
@@ -82,8 +82,8 @@ class TestCommitmentVerify:
         result = commitment.verify(mock_execution)
         assert result.status == VerificationResultStatus.SKIPPED
 
-    @patch('observable_agent.commitment.random.random', return_value=0.1)
-    @patch('observable_agent.commitment.semantic_verifier', return_value=IntermediateVerificationResult(
+    @patch('sworn.commitment.random.random', return_value=0.1)
+    @patch('sworn.commitment.semantic_verifier', return_value=IntermediateVerificationResult(
         status=VerificationResultStatus.VIOLATION,
         actual="did the thing",
         expected="do the thing",

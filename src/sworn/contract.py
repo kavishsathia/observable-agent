@@ -1,11 +1,11 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 import time
-from observable_agent.commitment import Commitment
+from sworn.commitment import Commitment
 from typing import Callable, Literal
-from observable_agent.observability.observer import Observer
-from observable_agent.types import ToolCall, ToolContext, VerificationResult, VerificationResultStatus
-from observable_agent.execution import Execution, _context_execution
+from sworn.observability.observer import Observer
+from sworn.types import ToolCall, ToolContext, VerificationResult, VerificationResultStatus
+from sworn.execution import Execution, _context_execution
 import inspect
 from functools import wraps
 from typing import Callable, Literal, ParamSpec, TypeVar

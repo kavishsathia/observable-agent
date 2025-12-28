@@ -1,10 +1,10 @@
 import pytest
 from unittest.mock import Mock, patch
-from observable_agent import contract
-from observable_agent.commitment import Commitment
-from observable_agent.types import VerificationResultStatus, IntermediateVerificationResult
-from observable_agent.execution import Execution
-from observable_agent.contract import Contract
+from sworn import contract
+from sworn.commitment import Commitment
+from sworn.types import VerificationResultStatus, IntermediateVerificationResult
+from sworn.execution import Execution
+from sworn.contract import Contract
 
 
 @pytest.fixture

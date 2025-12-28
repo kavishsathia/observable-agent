@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/kavishsathia/observable-agent/main/assets/logo.png" alt="Observable Agent" width="600"/>
+  <img src="https://raw.githubusercontent.com/kavishsathia/sworn/main/assets/logo.png" alt="Sworn" width="600"/>
 </p>
 
 <p align="center">
@@ -8,8 +8,8 @@
 
 <p align="center">
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+"></a>
-  <a href="https://github.com/kavishsathia/observable-agent/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT"></a>
-  <a href="https://github.com/kavishsathia/observable-agent"><img src="https://img.shields.io/badge/coverage-82%25-brightgreen.svg" alt="Coverage: 82%"></a>
+  <a href="https://github.com/kavishsathia/sworn/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT"></a>
+  <a href="https://github.com/kavishsathia/sworn"><img src="https://img.shields.io/badge/coverage-82%25-brightgreen.svg" alt="Coverage: 82%"></a>
 </p>
 
 ---
@@ -23,7 +23,7 @@ Its primary function is to produce a contract with a set of commitments before t
 ## Quick Start
 
 ```python
-from observable_agent import Contract, Commitment, DatadogObservability
+from sworn import Contract, Commitment, DatadogObservability
 
 # Define the contract with commitments
 observer = DatadogObservability()
@@ -135,7 +135,7 @@ This library is pretty much framework agnostic, it doesn't lock you into any age
 ## Installation
 
 ```bash
-pip install observable-agent
+pip install sworn
 ```
 
 Set your environment variables:
@@ -151,5 +151,5 @@ export DD_LLMOBS_AGENTLESS_ENABLED=1
 export DD_SITE=us5.datadoghq.com
 export DD_API_KEY=your_datadog_api_key
 export DD_ENV=development
-export DD_SERVICE=observable-agent
+export DD_SERVICE=sworn
 ```
