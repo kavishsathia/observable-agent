@@ -70,7 +70,8 @@ Context: {intermediate_result.context}
             commitment_name=self.name,
             actual=intermediate_result.actual,
             expected=intermediate_result.expected,
-            context=intermediate_result.context
+            context=intermediate_result.context,
+            cover=intermediate_result.cover
         )
 
     def get_term(self) -> str:

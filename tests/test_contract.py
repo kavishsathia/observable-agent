@@ -12,6 +12,7 @@ def mock_execution():
     """Create a fake execution."""
     execution = Mock(spec=Execution)
     execution.format.return_value = "tool1(arg1) -> result1"
+    execution.tool_calls = []
     return execution
 
 

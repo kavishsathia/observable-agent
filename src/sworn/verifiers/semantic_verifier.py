@@ -40,12 +40,14 @@ async def _semantic_verifier_async(execution, contract_terms: str) -> Intermedia
             status: str,
             actual: str,
             expected: str,
+            cover: list[int],
             reasoning: str = ""
     ):
         """Report the verification result."""
         result.status = VerificationResultStatus(status)
         result.actual = actual
         result.expected = expected
+        result.cover = cover
         if reasoning:
             result.context = {"reasoning": reasoning}
 
@@ -58,6 +60,7 @@ async def _semantic_verifier_async(execution, contract_terms: str) -> Intermedia
             - status: one of "pass", "warning", "violation", "critical"
             - actual: what the agent actually did
             - expected: what was expected per the contract
+            - cover: list of tool call indices (e.g. [0, 1, 2]) that are relevant to this contract term
             - reasoning: explanation of your verdict
 
             Use "pass" if compliant, "warning" for minor issues, "violation" for non-compliance, "critical" for severe violations.""",

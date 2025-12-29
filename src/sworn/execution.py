@@ -44,7 +44,7 @@ class Execution:
         """Formats the execution context and tool calls for logging or display purposes."""
         context_str = "\n".join(self.context)
         tool_calls_str = "\n".join([
-            f"Tool: {tc.tool_name}, Args: {tc.args}, Response: {tc.tool_response}"
-            for tc in self.tool_calls
+            f"[{i}] Tool: {tc.tool_name}, Args: {tc.args}, Response: {tc.tool_response}"
+            for i, tc in enumerate(self.tool_calls)
         ])
         return f"===Context===\n{context_str}\n===Execution===\n{tool_calls_str}"

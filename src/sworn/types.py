@@ -1,6 +1,6 @@
 from typing import Any, Dict, Literal
 from enum import Enum
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 
 
@@ -22,6 +22,7 @@ class VerificationResult:
     actual: str
     expected: str
     context: Dict[str, Any] | None = None
+    cover: list[int] = field(default_factory=list)
 
 
 @dataclass
@@ -31,6 +32,7 @@ class IntermediateVerificationResult:
     actual: str
     expected: str
     context: Dict[str, Any] | None = None
+    cover: list[int] = field(default_factory=list)
 
 
 @dataclass

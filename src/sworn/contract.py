@@ -54,6 +54,19 @@ class Contract:
             if self.on_violation:
                 self.on_violation(result)
 
+        covered_indices: set[int] = set()
+        for result in results:
+            covered_indices.update(result.cover)
+
+        all_indices = set(range(len(execution.tool_calls)))
+        uncovered_indices = all_indices - covered_indices
+
+        covered = [execution.tool_calls[i] for i in covered_indices]
+        uncovered = [execution.tool_calls[i] for i in uncovered_indices]
+
+        if obs:
+            obs.submit_coverage(covered, uncovered)
+
         return results
 
     def traced(self, func: Callable[P, R], function: Literal["sensor", "actuator"]) -> Callable[P, R]:
