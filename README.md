@@ -132,6 +132,14 @@ If you are confident that the deterministic test case is enough to account for a
 
 This library is pretty much framework agnostic, it doesn't lock you into any agentic framework (in fact, you can swap out frameworks without changing anything about the contract). There is a clear boundary set for this library and that is anything before your agent starts running, and anything after your agent finishes execution. This makes it independent of the execution. It traces tool calls during the agent runtime (outside of its boundary) by intercepting at the tool call level, meaning if your agent calls Python functions, then the library can trace it. If there are things that can't be traced (like agent's final output or reasoning), you can simply add it using execution.add_tool_call().
 
+### Execution Context
+
+You may need to capture some context so that you can access it within your verifier. To do this you can use the add_context() method. The method only accepts a string now, but I'm planning to add support for structured data to allow deterministic verifers to adapt to different contexts.
+
+### Contract Coverage
+
+Similar to how we compute coverage of tests on a codebase, it would also be interesting and useful to compute the coverage of your contracts on the agent's behaviour. Verifiers report the behaviour that they enforce and cover, and the contract finds the complement of the union of all these coverages to find out potential blindspots in your contract and behaviours that are not enforced. You can use this information to further tighten your contract by adding more commitments.
+
 ## Installation
 
 ```bash
