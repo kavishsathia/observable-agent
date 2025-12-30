@@ -13,6 +13,8 @@ from sworn.execution import Execution
 from sworn.types import VerificationResult, VerificationResultStatus, ToolCall, IntermediateVerificationResult
 from sworn.observability.observer import Observer
 from sworn.observability.datadog import DatadogObservability
+from sworn.verifiers.nli_verifier import nli_verifier
+from sworn.verifiers.semantic_verifier import semantic_verifier
 
 __all__ = [
     "Contract",
@@ -24,4 +26,6 @@ __all__ = [
     "ToolCall",
     "Observer",
     "DatadogObservability",
+    "nli_verifier",
+    "semantic_verifier",
 ]

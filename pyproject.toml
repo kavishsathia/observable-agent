@@ -18,6 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest", "pytest-cov"]
+nli = ["transformers>=4.30.0", "torch>=2.0.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
